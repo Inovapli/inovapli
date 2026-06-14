@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacidad — Inovapli</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF8;
+    --ink: #16161A;
+    --ink-soft: #6B6B70;
+    --accent: #2B3FE0;
+    --line: #E5E5E0;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  header {
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+  }
+
+  .header-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .brand-mark {
+    width: 30px; height: 30px;
+    border-radius: 7px;
+    background: var(--ink);
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .brand-mark::before {
+    content: '';
+    position: absolute;
+    left: 6px; top: 6px;
+    width: 8px; height: 18px;
+    border-radius: 2px;
+    background: var(--accent);
+  }
+
+  .brand-mark::after {
+    content: '';
+    position: absolute;
+    right: 6px; top: 6px;
+    width: 7px; height: 7px;
+    border-radius: 2px;
+    background: var(--bg);
+  }
+
+  .brand-name {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .lang-toggle {
+    display: flex;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .lang-toggle button {
+    border: none;
+    background: transparent;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: var(--font-display);
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 0.05em;
+  }
+
+  .lang-toggle button.active {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  main {
+    padding: 64px 0 100px;
+  }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .updated {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 48px;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  p, li {
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+
+  ul {
+    padding-left: 20px;
+    margin-bottom: 16px;
+  }
+
+  strong { color: var(--ink); font-weight: 600; }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .app-tag {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    background: rgba(127, 119, 221, 0.12);
+    color: #5A52C9;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 4px;
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 0;
+    text-align: center;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  [data-lang] { display: none; }
+  [data-lang].active { display: revert; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-mark"></div>
+      <span class="brand-name">Inovapli</span>
+    </a>
+    <div class="lang-toggle">
+      <button data-set-lang="es" class="active">ES</button>
+      <button data-set-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div data-lang="es" class="active">
+      <div class="eyebrow">Legal</div>
+      <h1>Política de privacidad</h1>
+      <div class="updated">Última actualización: junio 2026</div>
+
+      <p>
+        En Inovapli respetamos tu privacidad. Esta política explica qué información recopilan nuestras aplicaciones, cómo se usa y qué opciones tienes.
+      </p>
+
+      <span class="app-tag">GoDudeGo</span>
+
+      <h2>Información que recopilamos</h2>
+      <p>GoDudeGo está diseñado para funcionar sin necesidad de cuenta ni registro. La siguiente información puede recopilarse:</p>
+      <ul>
+        <li><strong>Datos de juego locales:</strong> tu progreso, monedas, distancias recorridas y preferencias se guardan únicamente en tu dispositivo.</li>
+        <li><strong>Identificadores de publicidad:</strong> usamos Google AdMob para mostrar anuncios. AdMob puede recopilar identificadores del dispositivo para mostrar anuncios relevantes.</li>
+        <li><strong>Datos de uso anónimos:</strong> información agregada sobre cómo se usa la app, sin identificarte personalmente.</li>
+      </ul>
+
+      <h2>Publicidad</h2>
+      <p>
+        Usamos <strong>Google AdMob</strong> para mostrar anuncios dentro de la app. AdMob puede usar identificadores de publicidad para personalizar los anuncios que ves. Puedes ajustar tus preferencias de publicidad en la configuración de tu dispositivo iOS, en Privacidad → Publicidad de Apple.
+      </p>
+      <p>
+        Para más información sobre cómo Google maneja los datos, consulta la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de privacidad de Google</a>.
+      </p>
+
+      <h2>Datos que NO recopilamos</h2>
+      <ul>
+        <li>No requerimos registro con correo electrónico ni contraseña.</li>
+        <li>No accedemos a tus contactos, fotos, ubicación ni micrófono.</li>
+        <li>No vendemos información personal a terceros.</li>
+      </ul>
+
+      <h2>Menores de edad</h2>
+      <p>
+        GoDudeGo está clasificada para audiencia general. No recopilamos intencionalmente información personal de menores de 13 años más allá de lo necesario para mostrar anuncios apropiados según las políticas de Google AdMob para audiencias familiares.
+      </p>
+
+      <h2>Cambios a esta política</h2>
+      <p>
+        Podemos actualizar esta política ocasionalmente. Los cambios se reflejarán en esta misma página con la fecha de actualización correspondiente.
+      </p>
+
+      <h2>Contacto</h2>
+      <p>
+        Si tienes preguntas sobre esta política de privacidad, escríbenos a
+        <a href="mailto:soporte@inovapli.com">soporte@inovapli.com</a>.
+      </p>
+    </div>
+
+    <div data-lang="en">
+      <div class="eyebrow">Legal</div>
+      <h1>Privacy policy</h1>
+      <div class="updated">Last updated: June 2026</div>
+
+      <p>
+        At Inovapli we respect your privacy. This policy explains what information our apps collect, how it's used, and what choices you have.
+      </p>
+
+      <span class="app-tag">GoDudeGo</span>
+
+      <h2>Information we collect</h2>
+      <p>GoDudeGo is designed to work without any account or sign-up. The following information may be collected:</p>
+      <ul>
+        <li><strong>Local game data:</strong> your progress, coins, distances run, and preferences are stored only on your device.</li>
+        <li><strong>Advertising identifiers:</strong> we use Google AdMob to display ads. AdMob may collect device identifiers to show relevant ads.</li>
+        <li><strong>Anonymous usage data:</strong> aggregated information about how the app is used, without identifying you personally.</li>
+      </ul>
+
+      <h2>Advertising</h2>
+      <p>
+        We use <strong>Google AdMob</strong> to display ads within the app. AdMob may use advertising identifiers to personalize the ads you see. You can adjust your advertising preferences in your iOS device settings, under Privacy → Apple Advertising.
+      </p>
+      <p>
+        For more information on how Google handles data, see Google's
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>.
+      </p>
+
+      <h2>Data we do NOT collect</h2>
+      <ul>
+        <li>We don't require sign-up with email or password.</li>
+        <li>We don't access your contacts, photos, location, or microphone.</li>
+        <li>We don't sell personal information to third parties.</li>
+      </ul>
+
+      <h2>Children</h2>
+      <p>
+        GoDudeGo is rated for general audiences. We do not knowingly collect personal information from children under 13 beyond what's necessary to serve age-appropriate ads under Google AdMob's policies for family audiences.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p>
+        We may update this policy from time to time. Changes will be reflected on this page along with the corresponding update date.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        If you have questions about this privacy policy, write to us at
+        <a href="mailto:soporte@inovapli.com">soporte@inovapli.com</a>.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    © 2026 Inovapli
+  </div>
+</footer>
+
+<script>
+  const langButtons = document.querySelectorAll('[data-set-lang]');
+  const langElements = document.querySelectorAll('[data-lang]');
+
+  function setLang(lang) {
+    langButtons.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.setLang === lang);
+    });
+    langElements.forEach(el => {
+      el.classList.toggle('active', el.dataset.lang === lang);
+    });
+    localStorage.setItem('inovapli-lang', lang);
+    document.documentElement.lang = lang;
+  }
+
+  langButtons.forEach(btn => {
+    btn.addEventListener('click', () => setLang(btn.dataset.setLang));
+  });
+
+  const savedLang = localStorage.getItem('inovapli-lang');
+  if (savedLang) setLang(savedLang);
+</script>
+
+</body>
+</html>

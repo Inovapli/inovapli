@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inovapli — Innovación en aplicaciones</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF8;
+    --ink: #16161A;
+    --ink-soft: #6B6B70;
+    --accent: #2B3FE0;
+    --line: #E5E5E0;
+    --surface: #FFFFFF;
+    --gdg-accent: #7F77DD;
+    --gdg-bg: #16161A;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ============ HEADER ============ */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250, 250, 248, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .brand-mark {
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .brand-name {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  nav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+
+  nav a:hover { color: var(--ink); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-right: 32px;
+  }
+
+  .lang-toggle {
+    display: flex;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    overflow: hidden;
+    font-family: var(--font-display);
+  }
+
+  .lang-toggle button {
+    border: none;
+    background: transparent;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: var(--font-display);
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 0.05em;
+  }
+
+  .lang-toggle button.active {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 100px 0 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-mark {
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 40px;
+    border-radius: 20px;
+    background: var(--ink);
+    position: relative;
+    opacity: 0;
+    transform: scale(0.6);
+    animation: markIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+  }
+
+  .hero-mark .block-a {
+    position: absolute;
+    left: 19px; top: 19px;
+    width: 24px; height: 50px;
+    border-radius: 4px;
+    background: var(--accent);
+    transform-origin: bottom left;
+    opacity: 0;
+    animation: blockIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+  }
+
+  .hero-mark .block-b {
+    position: absolute;
+    right: 19px; top: 19px;
+    width: 21px; height: 21px;
+    border-radius: 4px;
+    background: var(--bg);
+    opacity: 0;
+    animation: blockIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.65s forwards;
+  }
+
+  .hero-mark .block-c {
+    position: absolute;
+    right: 19px; bottom: 19px;
+    width: 21px; height: 21px;
+    border-radius: 4px;
+    background: var(--bg);
+    opacity: 0.25;
+    animation: blockIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+  }
+
+  @keyframes markIn {
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes blockIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 7vw, 72px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 .accent-word {
+    color: var(--accent);
+  }
+
+  .hero p {
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin: 0 auto 36px;
+  }
+
+  .split-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+
+  .split-tag span {
+    padding: 8px 18px;
+  }
+
+  .split-tag .innova {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .split-tag .pli {
+    color: var(--accent);
+  }
+
+  /* ============ APPS SECTION ============ */
+  .section {
+    padding: 80px 0;
+  }
+
+  .section-head {
+    margin-bottom: 48px;
+  }
+
+  .section-eyebrow {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .section-head p {
+    color: var(--ink-soft);
+    font-size: 16px;
+    max-width: 480px;
+  }
+
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  @media (max-width: 720px) {
+    .apps-grid { grid-template-columns: 1fr; }
+  }
+
+  /* GoDudeGo card — breaks the palette deliberately */
+  .app-card {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .app-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(22, 22, 26, 0.06);
+  }
+
+  .app-card-visual {
+    height: 200px;
+    background: var(--gdg-bg);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .gdg-sky {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #0a0e1a 0%, #14182c 100%);
+  }
+
+  .gdg-ground {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 38px;
+    background: #1a2244;
+    border-top: 2px solid #2a3a70;
+  }
+
+  .gdg-dude {
+    position: absolute;
+    bottom: 38px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 42px;
+    z-index: 3;
+  }
+
+  .gdg-dude .head {
+    width: 18px; height: 14px;
+    background: #AFA9EC;
+    border-radius: 6px 6px 2px 2px;
+    margin: 0 auto 2px;
+  }
+
+  .gdg-dude .body {
+    width: 24px; height: 18px;
+    background: var(--gdg-accent);
+    border-radius: 4px 4px 1px 1px;
+    margin: 0 auto;
+  }
+
+  .gdg-obstacle {
+    position: absolute;
+    bottom: 38px;
+    right: 36px;
+    width: 14px;
+    height: 30px;
+    background: #E24B4A;
+    border-radius: 3px 3px 1px 1px;
+    z-index: 2;
+  }
+
+  .gdg-obstacle::before {
+    content: '';
+    position: absolute;
+    top: -7px; left: -3px;
+    width: 20px; height: 7px;
+    background: #A32D2D;
+    border-radius: 3px;
+  }
+
+  .gdg-coin {
+    position: absolute;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: #EF9F27;
+    border: 2px solid #BA7517;
+    z-index: 2;
+  }
+
+  .gdg-tag {
+    position: absolute;
+    top: 16px; left: 16px;
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gdg-accent);
+    background: rgba(127, 119, 221, 0.12);
+    padding: 5px 12px;
+    border-radius: 100px;
+    border: 1px solid rgba(127, 119, 221, 0.3);
+    z-index: 4;
+  }
+
+  .app-card-body {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .app-card-body h3 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .app-card-body .tagline {
+    font-size: 13px;
+    color: var(--gdg-accent);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+    font-family: var(--font-display);
+  }
+
+  .app-card-body p {
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin-bottom: 20px;
+    flex: 1;
+  }
+
+  .app-card-links {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.15s;
+    border: 1px solid transparent;
+  }
+
+  .btn:hover { opacity: 0.85; }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink-soft);
+    border-color: var(--line);
+  }
+
+  /* Coming soon card */
+  .app-card-soon {
+    border-radius: 20px;
+    border: 1px dashed var(--line);
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+    min-height: 360px;
+    color: var(--ink-soft);
+  }
+
+  .app-card-soon .soon-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    border: 1px dashed var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--line);
+  }
+
+  .app-card-soon h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+
+  .app-card-soon p {
+    font-size: 13px;
+    max-width: 240px;
+  }
+
+  /* ============ ABOUT ============ */
+  .about-section {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  @media (max-width: 720px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  .about-section .section-eyebrow {
+    color: var(--gdg-accent);
+  }
+
+  .about-section h2 {
+    color: var(--bg);
+  }
+
+  .about-section p {
+    color: rgba(250, 250, 248, 0.65);
+  }
+
+  .word-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .word-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(250, 250, 248, 0.12);
+    flex-wrap: wrap;
+  }
+
+  .word-row:last-child { border-bottom: none; }
+
+  .word-row .word {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    flex: 0 0 150px;
+    white-space: nowrap;
+  }
+
+  .word-row .word.accent { color: var(--accent); }
+  .word-row .word.gdg-color { color: var(--gdg-accent); }
+
+  .word-row .desc {
+    font-size: 14px;
+    color: rgba(250, 250, 248, 0.55);
+    line-height: 1.6;
+    flex: 1 1 240px;
+    min-width: 0;
+  }
+
+  /* ============ FOOTER / SUPPORT ============ */
+  .support-section {
+    text-align: center;
+  }
+
+  .support-section .section-head {
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .support-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    text-align: left;
+  }
+
+  @media (max-width: 720px) {
+    .support-grid { grid-template-columns: 1fr; }
+  }
+
+  .support-card {
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px;
+  }
+
+  .support-card .icon-box {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 18px;
+  }
+
+  .support-card h3 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .support-card p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+
+  .support-card a {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 0;
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-inner .brand-name {
+    font-size: 15px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+
+  .footer-links a:hover { color: var(--ink); }
+
+  .footer-copy {
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  /* ============ UTILS ============ */
+  [data-lang] { display: none !important; }
+  [data-lang].active { display: revert !important; }
+  a[data-lang].active, span[data-lang].active { display: inline !important; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-mark, .hero-mark .block-a, .hero-mark .block-b, .hero-mark .block-c {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="brand">
+      <svg class="brand-mark" width="34" height="34" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="34" height="34" rx="8" fill="#16161A"/>
+        <rect x="7" y="7" width="9" height="20" rx="2" fill="#2B3FE0"/>
+        <rect x="19" y="7" width="8" height="8" rx="2" fill="#FAFAF8"/>
+      </svg>
+      <span class="brand-name">Inovapli</span>
+    </a>
+    <nav>
+      <div class="nav-links">
+        <a href="#apps" data-lang="es" class="active">Apps</a>
+        <a href="#apps" data-lang="en">Apps</a>
+        <a href="#about" data-lang="es" class="active">Nosotros</a>
+        <a href="#about" data-lang="en">About</a>
+        <a href="#support" data-lang="es" class="active">Soporte</a>
+        <a href="#support" data-lang="en">Support</a>
+      </div>
+      <div class="lang-toggle">
+        <button data-set-lang="es" class="active">ES</button>
+        <button data-set-lang="en">EN</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-mark">
+      <div class="block-a"></div>
+      <div class="block-b"></div>
+      <div class="block-c"></div>
+    </div>
+
+    <div class="split-tag">
+      <span class="innova">INNOVA</span><span class="pli">PLI</span>
+    </div>
+
+    <h1 class="active" data-lang="es">
+      Innovación<br>en <span class="accent-word">aplicaciones</span>
+    </h1>
+    <h1 data-lang="en">
+      Innovation<br>in <span class="accent-word">applications</span>
+    </h1>
+
+    <p class="active" data-lang="es">
+      Diseñamos y desarrollamos aplicaciones móviles — desde juegos casuales hasta herramientas para el día a día. Cada producto con su propia identidad, bajo un mismo estándar de calidad.
+    </p>
+    <p data-lang="en">
+      We design and build mobile apps — from casual games to everyday tools. Every product with its own identity, under one quality standard.
+    </p>
+  </div>
+</section>
+
+<section class="section" id="apps">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow active" data-lang="es">Catálogo</div>
+      <div class="section-eyebrow" data-lang="en">Catalog</div>
+
+      <h2 class="active" data-lang="es">Nuestras apps</h2>
+      <h2 data-lang="en">Our apps</h2>
+
+      <p class="active" data-lang="es">El catálogo va creciendo. Esta es la primera.</p>
+      <p data-lang="en">The catalog keeps growing. This is the first one.</p>
+    </div>
+
+    <div class="apps-grid">
+      <div class="app-card">
+        <div class="app-card-visual">
+          <div class="gdg-sky"></div>
+          <div class="gdg-tag">Arcade</div>
+          <div class="gdg-coin" style="bottom: 90px; left: 30%;"></div>
+          <div class="gdg-coin" style="bottom: 78px; left: 38%;"></div>
+          <div class="gdg-obstacle"></div>
+          <div class="gdg-ground"></div>
+          <div class="gdg-dude">
+            <div class="head"></div>
+            <div class="body"></div>
+          </div>
+        </div>
+        <div class="app-card-body">
+          <h3>GoDudeGo</h3>
+          <div class="tagline">RUN · JUMP · SURVIVE</div>
+          <p class="active" data-lang="es">
+            Un runner infinito con tres mundos — ciudad, bosque y desierto. Salta obstáculos, junta monedas y compite por la mayor distancia.
+          </p>
+          <p data-lang="en">
+            An endless runner across three worlds — city, forest, and desert. Jump obstacles, collect coins, and compete for the longest run.
+          </p>
+          <div class="app-card-links">
+            <a href="#" class="btn btn-primary active" data-lang="es">
+              Descargar
+            </a>
+            <a href="#" class="btn btn-primary" data-lang="en">
+              Download
+            </a>
+            <a href="#support" class="btn btn-ghost active" data-lang="es">Soporte</a>
+            <a href="#support" class="btn btn-ghost" data-lang="en">Support</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="app-card-soon">
+        <div class="soon-icon">+</div>
+        <h3 class="active" data-lang="es">Próximamente</h3>
+        <h3 data-lang="en">Coming soon</h3>
+        <p class="active" data-lang="es">Estamos trabajando en la siguiente app del catálogo.</p>
+        <p data-lang="en">We're working on the next app for the catalog.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section about-section" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <div class="section-eyebrow active" data-lang="es">Quiénes somos</div>
+        <div class="section-eyebrow" data-lang="en">Who we are</div>
+
+        <h2 class="active" data-lang="es">El nombre tiene un porqué</h2>
+        <h2 data-lang="en">The name has a reason</h2>
+
+        <p class="active" data-lang="es" style="margin-top: 16px; max-width: 460px;">
+          Inovapli nace de unir innovación y aplicaciones — la idea de que cada app que hacemos debería sentirse pensada, no genérica. Trabajamos en proyectos pequeños y enfocados, cada uno resolviendo un problema o entreteniendo de una forma concreta.
+        </p>
+        <p data-lang="en" style="margin-top: 16px; max-width: 460px;">
+          Inovapli comes from joining innovation and applications — the idea that every app we make should feel intentional, not generic. We work on small, focused projects, each one solving a problem or entertaining in a concrete way.
+        </p>
+      </div>
+
+      <div class="word-breakdown">
+        <div class="word-row">
+          <div class="word accent">Inova</div>
+          <div class="desc">
+            <span class="active" data-lang="es">De "innovación" — buscar formas distintas de resolver lo mismo de siempre.</span>
+            <span data-lang="en">From "innovation" — finding different ways to solve the same old problems.</span>
+          </div>
+        </div>
+        <div class="word-row">
+          <div class="word">Apli</div>
+          <div class="desc">
+            <span class="active" data-lang="es">De "aplicaciones" — el medio: software que la gente usa todos los días.</span>
+            <span data-lang="en">From "applications" — the medium: software people use every day.</span>
+          </div>
+        </div>
+        <div class="word-row">
+          <div class="word gdg-color">GoDudeGo</div>
+          <div class="desc">
+            <span class="active" data-lang="es">La primera del catálogo — un runner que no se toma muy en serio a sí mismo.</span>
+            <span data-lang="en">The first in the catalog — a runner that doesn't take itself too seriously.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section support-section" id="support">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow active" data-lang="es">Ayuda</div>
+      <div class="section-eyebrow" data-lang="en">Help</div>
+
+      <h2 class="active" data-lang="es">Soporte</h2>
+      <h2 data-lang="en">Support</h2>
+
+      <p class="active" data-lang="es">¿Tienes dudas, encontraste un bug o tienes una sugerencia? Aquí puedes contactarnos.</p>
+      <p data-lang="en">Have a question, found a bug, or have a suggestion? Reach out here.</p>
+    </div>
+
+    <div class="support-grid">
+      <div class="support-card">
+        <div class="icon-box"><i class="ti ti-mail" aria-hidden="true">✉</i></div>
+        <h3 class="active" data-lang="es">Correo</h3>
+        <h3 data-lang="en">Email</h3>
+        <p class="active" data-lang="es">Respondemos en menos de 48 horas, todos los días de la semana.</p>
+        <p data-lang="en">We reply within 48 hours, every day of the week.</p>
+        <a href="mailto:soporte@inovapli.com">soporte@inovapli.com</a>
+      </div>
+
+      <div class="support-card">
+        <div class="icon-box"><i class="ti ti-bug" aria-hidden="true">🐞</i></div>
+        <h3 class="active" data-lang="es">Reportar un problema</h3>
+        <h3 data-lang="en">Report an issue</h3>
+        <p class="active" data-lang="es">Si GoDudeGo se cierra, no carga o algo no funciona como debería.</p>
+        <p data-lang="en">If GoDudeGo crashes, fails to load, or something isn't working right.</p>
+        <a href="mailto:soporte@inovapli.com?subject=GoDudeGo%20-%20Reporte%20de%20problema">
+          <span class="active" data-lang="es">Enviar reporte</span>
+          <span data-lang="en">Send report</span>
+        </a>
+      </div>
+
+      <div class="support-card">
+        <div class="icon-box"><i class="ti ti-shield-lock" aria-hidden="true">🔒</i></div>
+        <h3 class="active" data-lang="es">Privacidad</h3>
+        <h3 data-lang="en">Privacy</h3>
+        <p class="active" data-lang="es">Cómo manejamos los datos dentro de nuestras apps.</p>
+        <p data-lang="en">How we handle data within our apps.</p>
+        <a href="privacy.html">
+          <span class="active" data-lang="es">Ver política</span>
+          <span data-lang="en">View policy</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <a href="#" class="brand">
+        <svg class="brand-mark" width="34" height="34" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="34" height="34" rx="8" fill="#16161A"/>
+        <rect x="7" y="7" width="9" height="20" rx="2" fill="#2B3FE0"/>
+        <rect x="19" y="7" width="8" height="8" rx="2" fill="#FAFAF8"/>
+      </svg>
+        <span class="brand-name">Inovapli</span>
+      </a>
+      <div class="footer-links">
+        <a href="#apps" data-lang="es" class="active">Apps</a>
+        <a href="#apps" data-lang="en">Apps</a>
+        <a href="#about" data-lang="es" class="active">Nosotros</a>
+        <a href="#about" data-lang="en">About</a>
+        <a href="privacy.html" data-lang="es" class="active">Privacidad</a>
+        <a href="privacy.html" data-lang="en">Privacy</a>
+      </div>
+      <div class="footer-copy">© 2026 Inovapli</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const langButtons = document.querySelectorAll('[data-set-lang]');
+  const langElements = document.querySelectorAll('[data-lang]');
+
+  function setLang(lang) {
+    langButtons.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.setLang === lang);
+    });
+    langElements.forEach(el => {
+      el.classList.toggle('active', el.dataset.lang === lang);
+    });
+    localStorage.setItem('inovapli-lang', lang);
+    document.documentElement.lang = lang;
+  }
+
+  langButtons.forEach(btn => {
+    btn.addEventListener('click', () => setLang(btn.dataset.setLang));
+  });
+
+  const savedLang = localStorage.getItem('inovapli-lang');
+  if (savedLang) setLang(savedLang);
+</script>
+
+</body>
+</html>
